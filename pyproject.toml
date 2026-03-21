@@ -3,16 +3,17 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ghrm-lite"
-version = "0.1.0"
-description = "E1 scaffold for flat vs hierarchical recurrent baselines on tiny synthetic tasks."
+name = "ghrm"
+version = "0.2.0"
+description = "Generalized Hierarchical Reasoning Model — causal LM with ACT halting."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
-authors = [{ name = "gHRM-Lite contributors" }]
+authors = [{ name = "gHRM contributors" }]
 dependencies = [
   "numpy>=1.26",
   "torch>=2.5",
+  "tiktoken>=0.7",
 ]
 
 [project.optional-dependencies]
@@ -20,10 +21,16 @@ dev = [
   "pytest>=8.0",
   "ruff>=0.11",
 ]
+train = [
+  "datasets>=3.0",
+]
+eval = [
+  "lm-eval>=0.4",
+]
 
 [project.scripts]
-ghrm-lite = "src.cli:main"
-ghrm-lite-run-e1 = "src.training.train_e1:main"
+ghrm = "src.cli:main"
+ghrm-train-e1 = "src.training.train_e1:main"
 
 [tool.setuptools]
 include-package-data = true
